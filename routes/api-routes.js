@@ -1,10 +1,9 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
 const userAuth = require("../middleware/user-auth");
+const db = require("../models");
 
 if (process.env.NODE_ENV !== 'production') require("dotenv").load();
-
-const db = require("../models");
 
 module.exports = function (app) {
 
@@ -36,7 +35,7 @@ module.exports = function (app) {
 
     });
 
-    app.post("/sign-in", function (req, res) {
+    app.post("/log-in", function (req, res) {
 
         db.UserMod.findOne({
             email: req.body.email
