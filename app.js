@@ -12,7 +12,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 app.use(express.static("public"));
 
-mongoose.connect("mongodb://localhost/testDB", {
+mongoose.connect("mongodb://localhost/userAuthDB", {
     useNewUrlParser: true
 });
 
