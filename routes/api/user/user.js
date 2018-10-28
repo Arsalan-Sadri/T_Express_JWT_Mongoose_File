@@ -1,8 +1,7 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const userAuth = require("../middleware/user-auth");
-const db = require("../models");
-
+const userAuth = require("../../../middleware/user-auth");
+const db = require("../../../models/user");
 if (process.env.NODE_ENV !== 'production') require("dotenv").load();
 
 module.exports = function (app) {
@@ -16,7 +15,7 @@ module.exports = function (app) {
         bcrypt.hash(req.body.password, 10, function (err, encrypted) {
             if (err) res.sendStatus(400);
             else {
-                db.UserMod.create({
+                db.User.create({
                     firstName: req.body.firstName,
                     lastName: req.body.lastName,
                     username: req.body.username,
@@ -37,7 +36,7 @@ module.exports = function (app) {
 
     app.post("/log-in", function (req, res) {
 
-        db.UserMod.findOne({
+        db.User.findOne({
             email: req.body.email
         }).then(function (userDB) {
             bcrypt.compare(req.body.password, userDB.password, function (err, same) {
