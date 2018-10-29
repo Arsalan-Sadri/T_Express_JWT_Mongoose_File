@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 const bcrypt = require("bcrypt");
-const userAuth = require("../../../middleware/user-auth");
+const middleware = require("../../../middleware");
 const db = require("../../../models/user");
 if (process.env.NODE_ENV !== 'production') require("dotenv").load();
 
@@ -55,7 +55,7 @@ module.exports = function (app) {
     });
 
     // The route to be protected
-    app.post("/api/posts", userAuth, function (req, res) {
+    app.post("/api/posts", middleware, function (req, res) {
         res.send("Post created...");
     });
 };
