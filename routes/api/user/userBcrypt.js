@@ -15,7 +15,15 @@ router
 
 router
     .route("/sign-up")
-    .post(userControlller.create);
+    .post((req, res) => {
+        bcrypt.hash(req.body.password, 10, function (err, encrypted) {
+            if (err) res.sendStatus(400);
+            else {
+                req.body.password = encrypted;
+                userControlller.create(req, res);
+            }
+        });
+    });
 
 router
     .route("/sign-in")
