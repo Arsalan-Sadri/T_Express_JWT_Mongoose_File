@@ -17,9 +17,7 @@ module.exports = {
             }
         });
     },
-    findByEmail: function(req, res) {
-        
-        
+    signIn: function(req, res) {
         db.User
             .findOne({
                 email: req.body.email
@@ -38,13 +36,10 @@ module.exports = {
                                 }
                             });
 
-                    } else res.send("Wrong password!"); // res.sendStatus(403);
+                    } else res.send("Wrong password!"); 
                 });
             }).catch(function (err) {
-                res.send("Email not found!"); // res.sendStatus(403);
+                res.send("Email not found!");
             });
-
-
-
     }
 };

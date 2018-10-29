@@ -1,5 +1,5 @@
 // const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 // const userAuth = require("../../../middleware/user-auth");
 // const db = require("../../../models/user");
 // if (process.env.NODE_ENV !== 'production') require("dotenv").load();
@@ -19,7 +19,7 @@ router
 
 router
     .route("/sign-in")
-    .post(userControlller.findByEmail);
+    .post(userControlller.signIn);
 
 
 module.exports = router;
