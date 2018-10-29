@@ -2,7 +2,7 @@ const jwt = require("jsonwebtoken");
 
 module.exports = function verifyToken(req, res, next) {
     // The token is sent along in the request's headers and in the following k:v format:
-    // Authorization: Bearer <token>
+    // Authorization: Bearer TOKEN_VALUE
     if (req.headers.authorization) {
         // Extracting token from the headers
         const token = req.headers.authorization.split(" ")[1];
