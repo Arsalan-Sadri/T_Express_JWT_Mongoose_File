@@ -26,14 +26,14 @@ module.exports = function (app) {
         });
     });
 
-    app.post("/log-in", function (req, res) {
+    app.post("/sign-in", function (req, res) {
 
         db.User.findOne({
             email: req.body.email
         }).then(function (dbUser) {
-            bcrypt.compare(req.body.password, dbUser.password, function (err, same) {
+            bcrypt.compare(req.body.password, dbUser.password, function (err, passVerified) {
                 if (err) res.send(err);
-                else if (same) {
+                else if (passVerified) {
 
                     jwt.sign({
                         email: dbUser.email

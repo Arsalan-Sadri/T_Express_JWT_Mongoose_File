@@ -19,13 +19,7 @@ router
 
 router
     .route("/sign-in")
-    .post((req, res) => {
-        userControlller.findByEmail(req, res);
-        // dbUser => res.json(dbUser);
-        res.json(dbUser)
-
-        // console.log("\n********\nhello!");
-    });
+    .post(userControlller.findByEmail);
 
 
 module.exports = router;
