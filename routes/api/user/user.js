@@ -25,4 +25,12 @@ router
         });
     });
 
+router
+    .route("/sign-in")
+    .post((req, res) => {
+        userControlller.findByEmail(req, res);
+        // res.json(dbUser);
+    });
+
+
 module.exports = router;

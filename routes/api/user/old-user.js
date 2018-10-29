@@ -15,13 +15,9 @@ module.exports = function (app) {
         bcrypt.hash(req.body.password, 10, function (err, encrypted) {
             if (err) res.sendStatus(400);
             else {
-                db.User.create({
-                    firstName: req.body.firstName,
-                    lastName: req.body.lastName,
-                    username: req.body.username,
-                    email: req.body.email,
-                    password: encrypted
-                }).then(function (addedUser) {
+                req.body.password = encrypted;
+                db.User.create( req.body
+                ).then(function (addedUser) {
                     res.json(addedUser);
                 }).catch(function (err) {
                     res.send(err);
@@ -30,21 +26,17 @@ module.exports = function (app) {
         });
     });
 
-    app.delete("/delete-account/:id", function (req, res) {
-
-    });
-
     app.post("/log-in", function (req, res) {
 
         db.User.findOne({
             email: req.body.email
-        }).then(function (userDB) {
-            bcrypt.compare(req.body.password, userDB.password, function (err, same) {
+        }).then(function (dbUser) {
+            bcrypt.compare(req.body.password, dbUser.password, function (err, same) {
                 if (err) res.send(err);
                 else if (same) {
 
                     jwt.sign({
-                        email: userDB.email
+                        email: dbUser.email
                     }, process.env.JWT_KEY, {
                         expiresIn: "1h"
                     }, function (err, token) {
