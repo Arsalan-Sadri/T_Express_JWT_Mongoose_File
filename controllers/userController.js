@@ -10,6 +10,8 @@ module.exports = {
             if (err) res.sendStatus(400);
             else {
                 req.body.password = encrypted;
+                console.log(req.file.path);
+                req.body.profilePic = req.file.path;
                 db.User
                     .create(req.body)
                     .then(addedUser => res.json(addedUser))
