@@ -5,15 +5,13 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const routes = require("./routes");
 
+app.use(logger("dev"));
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
+
 app.use("/uploads", express.static("uploads"));
 
-app.use(logger("dev"));
-app.use(
-    bodyParser.urlencoded({
-        extended: true
-    })
-);
-app.use(bodyParser.json());
+app.use(routes);
 
 mongoose.connect(
     "mongodb://localhost/userAuthDB",
@@ -22,7 +20,6 @@ mongoose.connect(
     }
 );
 
-app.use(routes);
 
 const PORT = process.env.PORT || 8080;
 const host = "localhost";
