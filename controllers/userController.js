@@ -84,11 +84,8 @@ module.exports = {
                 res.send("User not found!");
             });
     },
-    findAll: (req, res) => {
+    findAll: (req, res) =>
         db.User.find({})
             .then(allDbUsers => res.json(allDbUsers))
-            .catch(function(err) {
-                res.send("User not found!");
-            });
-    }
+            .catch(err => res.send("User not found!"))
 };
