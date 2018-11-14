@@ -12,7 +12,7 @@ const storage = multer.diskStorage({
     }
 });
 
-const saveImg = multer({ storage });
+const upload = multer({ storage });
 
 router.route("/").get(function(req, res, next) {
     res.send("It just works!");
@@ -20,7 +20,7 @@ router.route("/").get(function(req, res, next) {
 
 router
     .route("/sign-up")
-    .post(saveImg.single("sampleImg"), userControlller.create);
+    .post(upload.single("sampleImg"), userControlller.create);
 
 router.route("/sign-in").post(userControlller.signIn);
 
