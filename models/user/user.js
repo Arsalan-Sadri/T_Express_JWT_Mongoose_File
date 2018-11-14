@@ -11,6 +11,12 @@ const userSchema = new mongoose.Schema({
         trim: true,
         required: "Last name is required"
     },
+    username: {
+        type: String,
+        trim: true,
+        required: "Username is required",
+        unique: true
+    },
     email: {
         type: String,
         trim: true,
@@ -33,8 +39,8 @@ const userSchema = new mongoose.Schema({
         ]
     },
     profilePic: {
-        type: String, 
-        required: true 
+        type: String,
+        required: true
     }
 });
 

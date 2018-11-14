@@ -1,22 +1,23 @@
 {
-  "name": "User-Authentication",
-  "version": "1.0.0",
-  "description": "Building user authentication in Node.js",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "Arsalan Sadri- asadri62@gmail.com",
-  "license": "ISC",
-  "dependencies": {
-    "bcrypt": "^3.0.1",
-    "body-parser": "^1.18.3",
-    "dotenv": "^6.1.0",
-    "express": "^4.16.3",
-    "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.3.2",
-    "morgan": "^1.9.1",
-    "multer": "^1.4.1"
-  }
+    "name": "2-with-file-uploading",
+    "version": "1.0.0",
+    "description": "Simple user authentication app via Express.js, JWT, and Mongoose with profile picture uploading",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "start": "nodemon app.js"
+    },
+    "keywords": [],
+    "author": "Arsalan Sadri",
+    "license": "ISC",
+    "dependencies": {
+        "bcrypt": "^3.0.1",
+        "body-parser": "^1.18.3",
+        "dotenv": "^6.1.0",
+        "express": "^4.16.3",
+        "jsonwebtoken": "^8.3.0",
+        "mongoose": "^5.3.2",
+        "morgan": "^1.9.1",
+        "multer": "^1.4.1"
+    }
 }
