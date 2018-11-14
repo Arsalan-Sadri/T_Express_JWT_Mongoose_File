@@ -1,5 +1,6 @@
 const router = require("express").Router();
 const userControlller = require("../../../controllers/userController");
+const middleware = require("../../../middleware");
 const multer = require("multer");
 
 const storage = multer.diskStorage({
@@ -11,6 +12,10 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 router
+    .route("/")
+    .get((req, res, next) => res.send("App is running!"));
+
+router
     .route("/sign-up")
     .post(upload.single("profilePic"), userControlller.signUp);
 
@@ -19,7 +24,6 @@ router
     .post(userControlller.signIn);
 
 router
-    .route("/")
-    .get((req, res, next) => res.send("App is running!"));
+    .use(middleware.verifyToken);    
 
 module.exports = router;
