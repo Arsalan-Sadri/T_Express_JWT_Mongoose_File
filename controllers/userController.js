@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken");
 if (process.env.NODE_ENV !== "production") require("dotenv").load();
 
 module.exports = {
-    createAndSignIn: (req, res) => {
+    signUp: (req, res) => {
         bcrypt.hash(req.body.password, 10, function(err, encrypted) {
             if (err) res.sendStatus(400);
             else {
