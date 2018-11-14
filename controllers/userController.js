@@ -9,7 +9,7 @@ module.exports = {
             if (err) res.sendStatus(400);
             else {
                 req.body.password = encrypted;
-                req.body.profilePic = req.file.path;
+                req.body.picPath = req.file.path;
                 db.User.create(req.body)
                     .then(dbUser => {
                         jwt.sign(

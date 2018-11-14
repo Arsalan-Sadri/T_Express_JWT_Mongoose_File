@@ -38,7 +38,7 @@ const userSchema = new mongoose.Schema({
             "Password should be at least 8 characters!"
         ]
     },
-    profilePic: {
+    picPath: {
         type: String,
         required: true
     }
